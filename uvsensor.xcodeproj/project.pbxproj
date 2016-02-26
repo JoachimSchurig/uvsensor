@@ -7,8 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0DCAFB1C8078EC00CEE9E2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA0DCAFA1C8078EC00CEE9E2 /* main.cpp */; };
+		AA0DCB071C80795500CEE9E2 /* libGPIO.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0DCB061C8078FE00CEE9E2 /* libGPIO.dylib */; };
+		AA0DCB0B1C80798300CEE9E2 /* uvsensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA0DCB0A1C80798300CEE9E2 /* uvsensor.cpp */; };
+		AA0DCB0E1C807A0600CEE9E2 /* Adafruit_SI1145.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA0DCB0C1C807A0600CEE9E2 /* Adafruit_SI1145.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA0DCB051C8078FE00CEE9E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0DCB011C8078FE00CEE9E2 /* GPIO.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AA04BF391C6B808900D4449B;
+			remoteInfo = GPIO;
+		};
+		AA0DCB081C80795900CEE9E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0DCB011C8078FE00CEE9E2 /* GPIO.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AA04BF381C6B808900D4449B;
+			remoteInfo = GPIO;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		AA0DCAF51C8078EC00CEE9E2 /* CopyFiles */ = {
@@ -24,7 +43,10 @@
 
 /* Begin PBXFileReference section */
 		AA0DCAF71C8078EC00CEE9E2 /* uvsensor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = uvsensor; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA0DCAFA1C8078EC00CEE9E2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AA0DCB011C8078FE00CEE9E2 /* GPIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPIO.xcodeproj; path = ../../raspi/GPIO/GPIO/GPIO.xcodeproj; sourceTree = "<group>"; };
+		AA0DCB0A1C80798300CEE9E2 /* uvsensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uvsensor.cpp; sourceTree = "<group>"; };
+		AA0DCB0C1C807A0600CEE9E2 /* Adafruit_SI1145.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Adafruit_SI1145.cpp; sourceTree = "<group>"; };
+		AA0DCB0D1C807A0600CEE9E2 /* Adafruit_SI1145.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adafruit_SI1145.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0DCB071C80795500CEE9E2 /* libGPIO.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +64,7 @@
 		AA0DCAEE1C8078EC00CEE9E2 = {
 			isa = PBXGroup;
 			children = (
+				AA0DCB011C8078FE00CEE9E2 /* GPIO.xcodeproj */,
 				AA0DCAF91C8078EC00CEE9E2 /* uvsensor */,
 				AA0DCAF81C8078EC00CEE9E2 /* Products */,
 			);
@@ -57,9 +81,19 @@
 		AA0DCAF91C8078EC00CEE9E2 /* uvsensor */ = {
 			isa = PBXGroup;
 			children = (
-				AA0DCAFA1C8078EC00CEE9E2 /* main.cpp */,
+				AA0DCB0C1C807A0600CEE9E2 /* Adafruit_SI1145.cpp */,
+				AA0DCB0D1C807A0600CEE9E2 /* Adafruit_SI1145.h */,
+				AA0DCB0A1C80798300CEE9E2 /* uvsensor.cpp */,
 			);
 			path = uvsensor;
+			sourceTree = "<group>";
+		};
+		AA0DCB021C8078FE00CEE9E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA0DCB061C8078FE00CEE9E2 /* libGPIO.dylib */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -76,6 +110,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA0DCB091C80795900CEE9E2 /* PBXTargetDependency */,
 			);
 			name = uvsensor;
 			productName = uvsensor;
@@ -106,6 +141,12 @@
 			mainGroup = AA0DCAEE1C8078EC00CEE9E2;
 			productRefGroup = AA0DCAF81C8078EC00CEE9E2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AA0DCB021C8078FE00CEE9E2 /* Products */;
+					ProjectRef = AA0DCB011C8078FE00CEE9E2 /* GPIO.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AA0DCAF61C8078EC00CEE9E2 /* uvsensor */,
@@ -113,16 +154,35 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		AA0DCB061C8078FE00CEE9E2 /* libGPIO.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPIO.dylib;
+			remoteRef = AA0DCB051C8078FE00CEE9E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA0DCAF31C8078EC00CEE9E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0DCAFB1C8078EC00CEE9E2 /* main.cpp in Sources */,
+				AA0DCB0B1C80798300CEE9E2 /* uvsensor.cpp in Sources */,
+				AA0DCB0E1C807A0600CEE9E2 /* Adafruit_SI1145.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA0DCB091C80795900CEE9E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPIO;
+			targetProxy = AA0DCB081C80795900CEE9E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AA0DCAFC1C8078EC00CEE9E2 /* Debug */ = {
@@ -161,6 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = /Users/joachim/raspi/GPIO/GPIO/GPIO/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -198,6 +259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = /Users/joachim/raspi/GPIO/GPIO/GPIO/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
