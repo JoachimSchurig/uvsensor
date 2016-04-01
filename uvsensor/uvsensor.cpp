@@ -4,7 +4,7 @@
 //  program to read the SI1145 sensor every second and writing averaged
 //  values in a file and/or on stdout.
 //
-//  compile: g++ -std=gnu-c++14 -o uvsensor uvsensor.cpp Adafruit_SI1145.cpp -lcppgpio
+//  compile: g++ -std=gnu++14 -o uvsensor uvsensor.cpp Adafruit_SI1145.cpp -lcppgpio
 //
 //  call like: sudo ./uvsensor -i 60 -f uvsensor.data -p
 //
@@ -16,7 +16,7 @@
 #include "Adafruit_SI1145.h"
 
 #include <stdlib.h>
-#include <time.h>
+#include <unistd.h>
 
 #include <string>
 #include <vector>
@@ -24,38 +24,28 @@
 #include <fstream>
 #include <iomanip>
 #include <cctype>
+#include <chrono>
 
 
 // prepare data types and storage for sensor values
 struct value_t {
-    uint16_t uv;
-    uint32_t lux;
-    uint32_t ir;
-    value_t() : uv(0), lux(0), ir(0) {}
+    uint16_t uv {0};
+    uint32_t lux {0};
+    uint32_t ir {0};
 };
 
 typedef std::vector<value_t> values_t;
 
 struct parms_t {
     std::string filename;
-    bool print_to_console;
-    bool continuous;
-    bool initialize;
-    bool deinitialize;
-    bool raw;
-    bool query_settings;
-    int interval;
-    char single;
-    parms_t()
-    : print_to_console(false)
-    , continuous(false)
-    , initialize(true)
-    , deinitialize(true)
-    , raw(false)
-    , query_settings(false)
-    , interval(0)
-    , single(0)
-    {}
+    bool print_to_console {false};
+    bool continuous {false};
+    bool initialize {true};
+    bool deinitialize {true};
+    bool raw {false};
+    bool query_settings {false};
+    int interval {0};
+    char single {0};
 };
 
 
@@ -74,7 +64,7 @@ void read_sensor(const parms_t& parms)
         }
 
         // sleep 5 ms to let the sensor fill with data before first read
-        usleep(5 * 1000);
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
     
     // declare data storage
@@ -192,8 +182,8 @@ void read_sensor(const parms_t& parms)
         }
         
         // sleep one second
-        usleep(1 * 1000 * 1000);
-        
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
     }
 }
 
